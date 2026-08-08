@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A Little Album of Us — 2 Years</title>
+<style>
+:root{--paper:#f4ead8;--cream:#fff8e9;--ink:#3d342c;--brown:#765b43;--rust:#a56a4c;--shadow:rgba(50,35,25,.16)}
+*{box-sizing:border-box}body{margin:0;background:#d7c8b0;color:var(--ink);font-family:Georgia,"Times New Roman",serif}
+.page{display:none;min-height:100vh;padding:24px 16px 90px}.page.active{display:block}
+.paper{max-width:900px;min-height:calc(100vh - 48px);margin:auto;background:var(--paper);padding:34px 24px;box-shadow:0 12px 40px var(--shadow);position:relative}
+.content{position:relative;z-index:1}.center{text-align:center}.kicker{font-size:12px;letter-spacing:.18em;color:var(--rust);margin-bottom:18px}
+h1{font-size:clamp(42px,9vw,82px);line-height:.95;margin:0 0 18px}h2{font-size:clamp(30px,6vw,50px);margin:0 0 16px}
+p{line-height:1.8}.lead{font-size:18px}.record{width:min(55vw,250px);aspect-ratio:1;border-radius:50%;margin:0 auto 28px;background:repeating-radial-gradient(circle,#111 0 2px,#292726 3px 5px);box-shadow:8px 10px 20px var(--shadow)}
+.btn{border:1px solid #806b56;background:#fff8ea;color:var(--ink);padding:11px 17px;border-radius:999px;cursor:pointer;margin:4px}.btn.primary{background:var(--brown);color:white}
+.controls{position:fixed;bottom:0;left:0;right:0;z-index:10;background:#fff8e9ee;display:flex;justify-content:center;align-items:center;gap:6px;padding:8px;border-top:1px solid #d0bfa7;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.card{background:#fffaf0;border:1px solid #d6c5aa;padding:18px;box-shadow:2px 4px 10px var(--shadow)}
+.photo{background:#fffdf6;padding:10px 10px 22px;box-shadow:4px 8px 16px var(--shadow);text-align:center}.photo img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#d8c8b0}.photo:nth-child(even){transform:rotate(1deg)}.photo:nth-child(odd){transform:rotate(-1deg)}
+.big{font-size:clamp(70px,18vw,150px);line-height:.8;text-align:center;color:var(--brown);font-weight:bold;margin:45px 0 20px}
+.timeline{border-left:2px dashed var(--brown);padding-left:22px;margin:30px 8px}.event{margin:0 0 28px}
+.note{background:#fff7dc;border-left:4px solid var(--rust);padding:15px;margin:22px 0}
+.question{background:#fffaf0;border:1px solid #d6c5aa;padding:18px;margin:15px 0}.option{display:block;width:100%;text-align:left;background:#fffdf8;border:1px solid #cdbba3;padding:11px;margin:7px 0;border-radius:9px}.correct{background:#e5ead9!important}.wrong{background:#f0d8ca!important}
+textarea{width:100%;min-height:140px;padding:12px;border:1px solid #cdbba3;background:#fffdf8;border-radius:9px}label{display:block;font-weight:bold;margin-bottom:8px}
+@media(max-width:600px){.paper{padding:26px 16px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<section class="page active"><div class="paper"><div class="content center">
+<div class="record"></div><div class="kicker">SIDE A · OUR LITTLE ALBUM · 2024—2026</div>
+<h1>A Little<br>Album of Us</h1>
+<p class="lead">730 วันของเรา — วันที่ดี วันที่วุ่นวาย และทุกอย่างที่อยู่ระหว่างนั้น</p>
+<button class="btn primary" onclick="go(1)">เปิดเรื่องของเรา ↓</button>
+<button class="btn" onclick="toggleMusic()">♫ เปิดเพลงของเรา</button>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE A · 01 · OUR BEGINNING</div><h2>ก่อนจะเป็น “เรา”</h2>
+<p class="lead">ตรงนี้คือเรื่องราวก่อนที่เราจะกลายมาเป็นเรา — วันแรก ๆ ที่ได้รู้จักกัน ความรู้สึกตอนนั้น และเรื่องเล็ก ๆ ที่พาเรามาถึงวันนี้</p>
+<div class="grid">
+<div class="photo"><img src="assets/photo1.jpg"><small>ใส่คำบรรยายรูปนี้เอง</small></div>
+<div class="photo"><img src="assets/photo2.jpg"><small>ใส่คำบรรยายรูปนี้เอง</small></div>
+<div class="photo"><img src="assets/photo3.jpg"><small>ใส่คำบรรยายรูปนี้เอง</small></div>
+<div class="photo"><img src="assets/photo4.jpg"><small>ใส่คำบรรยายรูปนี้เอง</small></div>
+</div>
+<div class="note"><b>เรื่องเล็ก ๆ ที่เราเก็บเอาไว้</b><br>ใส่ความทรงจำของแพตตรงนี้</div>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE A · 02 · 730 DAYS</div><h2>730 วันของเรา</h2><div class="big">730</div>
+<p class="center lead">วันที่ดี วันที่วุ่นวาย และทุกอย่างที่อยู่ระหว่างนั้น</p>
+<div class="grid"><div class="card"><h3>วันที่ดี</h3><p>ช่วงเวลาที่เราอยากเก็บไว้จำ</p></div>
+<div class="card"><h3>วันที่วุ่นวาย</h3><p>วันที่เราอาจไม่เข้าใจกัน แต่ก็ได้เรียนรู้</p></div>
+<div class="card"><h3>เรื่องธรรมดา</h3><p>บทสนทนา การกินข้าว การเรียน และเรื่องเล็ก ๆ</p></div>
+<div class="card"><h3>วันนี้</h3><p>สองปีผ่านไป และเรายังมีเรื่องราวให้เขียนต่อ</p></div></div>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE A · 03 · THINGS I NOTICE</div><h2>สิ่งต่าง ๆ ที่เราสังเกตเห็นเกี่ยวกับเธอ</h2>
+<p class="lead">ไม่ใช่แค่สิ่งใหญ่ ๆ แต่เป็นรายละเอียดเล็ก ๆ ที่บางทีเธออาจไม่รู้ว่าเราจำมันได้</p>
+<div class="grid"><div class="card"><h3>ตอนที่เธออ้อน</h3><p>ใส่สิ่งที่แพตชอบตรงนี้</p></div><div class="card"><h3>ตอนที่เธอมาบ่น</h3><p>สิ่งที่ทำให้เรารู้ว่าเธอสบายใจที่จะเล่า</p></div><div class="card"><h3>ตอนที่เธอทำให้เราหัวเราะ</h3><p>ใส่ inside joke</p></div><div class="card"><h3>มุมที่คนอื่นอาจไม่เห็น</h3><p>สิ่งที่เราสังเกตเห็นเป็นพิเศษ</p></div></div>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE B · 04 · OUR TIMELINE</div><h2>เรื่องราวของเรา</h2>
+<div class="timeline"><div class="event"><h3>THE BEGINNING — จุดเริ่มต้น</h3><p>ใส่เรื่องตอนเริ่มรู้จักกัน</p></div>
+<div class="event"><h3>THE DAY WE STARTED — วันที่เราเริ่มต้น</h3><p>ใส่วันที่เริ่มคบกัน</p></div>
+<div class="event"><h3>THE HARD DAYS — ช่วงเวลาที่ยาก</h3><p>เล่าว่าเราเรียนรู้อะไรจากช่วงนั้น</p></div>
+<div class="event"><h3>TODAY — วันนี้</h3><p>สองปีของเรา และเรื่องราวที่ยังเขียนต่อได้</p></div></div>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE B · 05 · WHAT WE LEARNED</div><h2>สิ่งที่สองปีนี้สอนเรา</h2>
+<div class="grid"><div class="card"><h3>เราไม่ได้เข้าใจกันทุกอย่างตั้งแต่แรก</h3><p>เราแค่ค่อย ๆ เรียนรู้กันต่อไป</p></div>
+<div class="card"><h3>การกลับมาคุยกัน</h3><p>บางครั้งสำคัญกว่าการพยายามหาว่าใครถูกหรือผิด</p></div>
+<div class="card"><h3>เราแตกต่างกันได้</h3><p>เราไม่จำเป็นต้องเหมือนกันทุกอย่างเพื่อเดินไปด้วยกัน</p></div></div>
+<div class="note"><b>ตรงนี้แพตเขียนความคิดของตัวเองเพิ่มได้</b></div>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE B · 06 · OUR GAME</div><h2>How well do you know us? ♡</h2><p>ตอบให้ถูกเพื่อปลดล็อกข้อความสุดท้าย</p><div id="quiz"></div><div id="score"></div>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE B · 07 · ONE LAST PAGE</div><h2>ถึงตาเธอบ้างแล้ว</h2>
+<p class="lead">เราเล่าเรื่องของเราให้เธอฟังมาตลอดทั้งเว็บ<br>คราวนี้เราอยากฟังเรื่องของเธอบ้าง</p>
+<div class="note"><b>ไม่มีคำตอบที่ถูกหรือผิด</b><br>ไม่จำเป็นต้องตอบทุกข้อ และไม่ต้องพยายามตอบให้เรารู้สึกดี<br><br>
+ถ้ามีอะไรที่อยากบอกเรา เราอยากให้เธอพูดมันออกมาตรง ๆ เพราะเราอยากรู้จักเธอในมุมที่เราอาจยังไม่เคยเห็น<br><br>
+คำตอบของเธอจะถูกเก็บไว้ให้เราได้กลับมาอ่านอีกครั้ง ♡</div>
+<form id="deepForm"></form>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content center">
+<div class="kicker">THE LAST PAGE</div><h2>ขอบคุณที่กลับมาอ่านเรื่องของเรา</h2>
+<p class="lead">และขอบคุณที่เล่าเรื่องของเธอให้เราฟังด้วย</p><p>บางทีเราอาจไม่ได้มีคำตอบให้กันทุกเรื่อง แต่เรายังสามารถเรียนรู้กันต่อไปได้</p><p style="font-size:30px">♡</p>
+</div></div></section>
+
+<div class="controls"><button class="btn" onclick="prev()">← ก่อนหน้า</button><span id="label">หน้า 1 / 9</span><button class="btn" onclick="next()">ต่อไป →</button><button class="btn" onclick="toggleMusic()">♫ เพลง</button></div>
+<audio id="home" src="assets/home.mp3" loop></audio><audio id="jigsaw" src="assets/lost-jigsaw.mp3" loop></audio><audio id="bloom" src="assets/blooming.mp3" loop></audio>
+
+<script>
+const pages=[...document.querySelectorAll('.page')], home=document.getElementById('home'), jigsaw=document.getElementById('jigsaw'), bloom=document.getElementById('bloom');
+let page=0, playing=false, track="";
+function go(n){page=Math.max(0,Math.min(8,n));pages.forEach((x,i)=>x.classList.toggle('active',i===page));document.getElementById('label').textContent=`หน้า ${page+1} / 9`;music();scrollTo(0,0)}
+function next(){go(page+1)} function prev(){go(page-1)}
+function music(){if(!playing)return;let want=(page>=4&&page<=7)?"jigsaw":"home";if(want===track)return;[home,jigsaw,bloom].forEach(x=>x.pause());track=want;let a=want==="home"?home:jigsaw;a.volume=.45;a.play().catch(()=>{})}
+function toggleMusic(){if(!playing){playing=true;track="";music()}else{[home,jigsaw,bloom].forEach(x=>x.pause());playing=false;track=""}}
+const qs=[
+["เราเริ่มรู้จักกันจากอะไร?",["สายรหัส","คาเฟ่","คอนเสิร์ต","ห้องเรียน"],0],
+["วันนี้เราครบรอบกี่ปี?",["1 ปี","2 ปี","3 ปี","4 ปี"],1],
+["สิ่งหนึ่งที่เราอยากเก็บไว้ในอัลบั้มนี้คืออะไร?",["เรื่องเล็ก ๆ ของเรา","ตารางเรียน","การบ้าน","คะแนนสอบ"],0],
+["เวลาที่เธอเหนื่อย เราอยากเป็นอะไรให้เธอ?",["พื้นที่ที่ปลอดภัย","ครู","กรรมการ","คู่แข่ง"],0],
+["เว็บนี้ตั้งใจให้ความรู้สึกเหมือนอะไร?",["อัลบั้มความทรงจำ","ข้อสอบ","คู่มือ","ร้านค้า"],0],
+["ปีที่เราอยากเขียนเรื่องราวต่อคือปีที่เท่าไหร่?",["ปีที่ 1","ปีที่ 2","ปีที่ 3","ปีที่ 10"],2],
+["ถ้าเราไม่เข้าใจกัน สิ่งหนึ่งที่เราอยากทำคืออะไร?",["หายไป","กลับมาคุยกัน","แข่งกัน","ไม่ฟังกัน"],1],
+["หน้า Deep Talk มีทั้งหมดกี่คำถาม?",["5","7","10","20"],2],
+["A Little Album of Us หมายถึงอะไร?",["อัลบั้มเล็ก ๆ ของเรา","โลกของเรา","บ้านของเรา","เพลงของเรา"],0],
+["สุดท้ายของเว็บ เราอยากเก็บอะไรไว้?",["ความทรงจำและคำตอบของเธอ","คะแนน","เวลาเล่น","ชื่อเกม"],0]
+];
+let qi=0,score=0,locked=false;
+function renderQuiz(){if(qi>=qs.length){document.getElementById('quiz').innerHTML=`<div class="note center"><b>ครบทุกข้อแล้ว ♡</b><br>คะแนน ${score} / ${qs.length}</div>`;return}
+let x=qs[qi];document.getElementById('quiz').innerHTML=`<div class="question"><small>คำถามที่ ${qi+1} / ${qs.length}</small><h3>${x[0]}</h3>${x[1].map((o,i)=>`<button class="option" onclick="ans(${i})">${o}</button>`).join("")}</div>`;document.getElementById('score').textContent=`คะแนนตอนนี้: ${score}`}
+function ans(i){if(locked)return;locked=true;let x=qs[qi],bs=document.querySelectorAll('.option');bs[x[2]].classList.add('correct');if(i===x[2])score++;else bs[i].classList.add('wrong');setTimeout(()=>{qi++;locked=false;renderQuiz()},650)}
+const prompts=[
+"ตลอด 2 ปีที่ผ่านมา เธอคิดว่าความสัมพันธ์ของพวกเราเปลี่ยนไปยังไงบ้าง?\nมีอะไรที่เธอรู้สึกว่าแตกต่างจากตอนที่เราเริ่มคบกันจนถึงวันนี้?",
+"มีช่วงเวลาไหนของเราที่เธอยังจำได้จนถึงวันนี้?",
+"มีสิ่งเล็ก ๆ อะไรที่เราทำแล้วทำให้เธอรู้สึกว่า “เขาใส่ใจเรา”?",
+"มีอะไรที่เธออยากให้เรารู้ แต่ไม่ค่อยมีโอกาสพูด?",
+"มีอะไรที่เธออยากให้เราลองปรับหรือทำให้ดีขึ้นในความสัมพันธ์ของเราบ้าง?\nตอบได้ตามที่รู้สึกเลยนะ เราอยากฟังจริง ๆ ไม่ต้องกลัวว่าเราจะโกรธ ♡",
+"มีอะไรที่เราเคยทำแล้วทำให้เธอรู้สึกไม่ดี แต่เธออาจไม่เคยบอกเรา?\nข้อนี้ข้ามได้ถ้ายังไม่พร้อมตอบ",
+"เวลาเธอเหนื่อยหรือมีเรื่องไม่สบายใจ เธออยากให้เราอยู่ข้าง ๆ ในแบบไหน?",
+"ถ้าเลือกได้หนึ่งอย่าง เธออยากให้เราได้ทำอะไรด้วยกันในปีที่ 3?",
+"ถ้าให้เธอเลือกหนึ่งคำเพื่ออธิบายความสัมพันธ์ของเราในตอนนี้ จะเลือกคำว่าอะไร? เพราะอะไร?",
+"ถ้าเธออยากฝากข้อความหนึ่งข้อความไว้ให้เราเปิดกลับมาอ่านอีกครั้งในวันที่ครบรอบของเราในอนาคต เธออยากเขียนว่าอะไร?"
+];
+document.getElementById('deepForm').innerHTML=prompts.map((p,i)=>`<div class="question"><label>${i+1}. ${p.replace(/\n/g,"<br>")}</label><textarea name="q${i+1}"></textarea></div>`).join("")+
+`<button type="button" class="btn primary" onclick="save()">บันทึกคำตอบไว้ในเครื่องนี้</button><button type="button" class="btn" onclick="clearForm()">ล้างคำตอบ</button><p><small>เวอร์ชันนี้เป็นแบบทดลองเก็บคำตอบในเครื่องที่เปิดเว็บอยู่ ขั้นต่อไปเราจะเชื่อมแบบฟอร์มออนไลน์ให้แฟนตอบจากมือถือแล้วแพตอ่านได้</small></p>`;
+function save(){let d={};document.querySelectorAll('#deepForm textarea').forEach(x=>d[x.name]=x.value);localStorage.setItem('albumAnswers',JSON.stringify(d));alert('บันทึกคำตอบไว้ในเครื่องนี้แล้ว ♡')}
+function clearForm(){document.querySelectorAll('#deepForm textarea').forEach(x=>x.value="");localStorage.removeItem('albumAnswers')}
+renderQuiz();go(0);
+</script>
+</body></html>
