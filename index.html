@@ -30,17 +30,16 @@ textarea{width:100%;min-height:140px;padding:12px;border:1px solid #cdbba3;backg
 <h1>A Little<br>Album of Us</h1>
 <p class="lead">730 วันของเรา — วันที่ดี วันที่วุ่นวาย และทุกอย่างที่อยู่ระหว่างนั้น</p>
 <button class="btn primary" onclick="go(1)">เปิดเรื่องของเรา ↓</button>
-<button class="btn" onclick="toggleMusic()">♫ เปิดเพลงของเรา</button>
 </div></div></section>
 
 <section class="page"><div class="paper"><div class="content">
 <div class="kicker">SIDE A · 01 · OUR BEGINNING</div><h2>ก่อนจะเป็น “เรา”</h2>
 <p class="lead">ตรงนี้คือเรื่องราวก่อนที่เราจะกลายมาเป็นเรา — วันแรก ๆ ที่ได้รู้จักกัน ความรู้สึกตอนนั้น และเรื่องเล็ก ๆ ที่พาเรามาถึงวันนี้</p>
 <div class="grid">
-<div class="photo"><img src="assets/photo1.jpg"><small>ใส่คำบรรยายรูปนี้เอง</small></div>
-<div class="photo"><img src="assets/photo2.jpg"><small>ใส่คำบรรยายรูปนี้เอง</small></div>
-<div class="photo"><img src="assets/photo3.jpg"><small>ใส่คำบรรยายรูปนี้เอง</small></div>
-<div class="photo"><img src="assets/photo4.jpg"><small>ใส่คำบรรยายรูปนี้เอง</small></div>
+<div class="photo"><img src="assets/IMG_1364.jpeg"><small>ใส่คำบรรยายรูปนี้เอง</small></div>
+<div class="photo"><img src="assets/IMG_1365.jpeg"><small>ใส่คำบรรยายรูปนี้เอง</small></div>
+<div class="photo"><img src="assets/IMG_1366.jpeg"><small>ใส่คำบรรยายรูปนี้เอง</small></div>
+<div class="photo"><img src="assets/IMG_1367.jpeg"><small>ใส่คำบรรยายรูปนี้เอง</small></div>
 </div>
 <div class="note"><b>เรื่องเล็ก ๆ ที่เราเก็บเอาไว้</b><br>ใส่ความทรงจำของแพตตรงนี้</div>
 </div></div></section>
@@ -86,24 +85,57 @@ textarea{width:100%;min-height:140px;padding:12px;border:1px solid #cdbba3;backg
 <div class="note"><b>ไม่มีคำตอบที่ถูกหรือผิด</b><br>ไม่จำเป็นต้องตอบทุกข้อ และไม่ต้องพยายามตอบให้เรารู้สึกดี<br><br>
 ถ้ามีอะไรที่อยากบอกเรา เราอยากให้เธอพูดมันออกมาตรง ๆ เพราะเราอยากรู้จักเธอในมุมที่เราอาจยังไม่เคยเห็น<br><br>
 คำตอบของเธอจะถูกเก็บไว้ให้เราได้กลับมาอ่านอีกครั้ง ♡</div>
-<form id="deepForm"></form>
+<form id="deepForm">
+  <textarea id="message" placeholder="พิมพ์ข้อความถึงเรา..."></textarea>
+  <button type="submit">ส่งข้อความ</button>
+</form>
+
+<script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwCIcR2ZSUkwZZmRSuusaf_R4WIOOIN4bHb30OkfFuAe_Ur4H0p-wXsz-bRFhsGS61v/exec";
+
+document.getElementById("deepForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const message = document.getElementById("message").value.trim();
+
+  if (!message) {
+    alert("กรุณาพิมพ์ข้อความก่อนนะ");
+    return;
+  }
+
+  try {
+    await fetch(WEB_APP_URL + "?message=" + encodeURIComponent(message), {
+      method: "GET",
+      mode: "no-cors"
+    });
+
+    document.getElementById("message").value = "";
+    alert("ส่งข้อความแล้ว 🤎");
+  } catch (error) {
+    alert("ส่งข้อความไม่สำเร็จ ลองใหม่อีกครั้งนะ");
+  }
+});
+</script>
 </div></div></section>
 
 <section class="page"><div class="paper"><div class="content center">
 <div class="kicker">THE LAST PAGE</div><h2>ขอบคุณที่กลับมาอ่านเรื่องของเรา</h2>
 <p class="lead">และขอบคุณที่เล่าเรื่องของเธอให้เราฟังด้วย</p><p>บางทีเราอาจไม่ได้มีคำตอบให้กันทุกเรื่อง แต่เรายังสามารถเรียนรู้กันต่อไปได้</p><p style="font-size:30px">♡</p>
+<div class="photo">
+  <img src="assets/IMG_1368.jpeg">
+</div>
 </div></div></section>
 
-<div class="controls"><button class="btn" onclick="prev()">← ก่อนหน้า</button><span id="label">หน้า 1 / 9</span><button class="btn" onclick="next()">ต่อไป →</button><button class="btn" onclick="toggleMusic()">♫ เพลง</button></div>
-<audio id="home" src="assets/home.mp3" loop></audio><audio id="jigsaw" src="assets/lost-jigsaw.mp3" loop></audio><audio id="bloom" src="assets/blooming.mp3" loop></audio>
+<div class="controls"><button class="btn" onclick="prev()">← ก่อนหน้า</button><span id="label">หน้า 1 / 9</span><button class="btn" onclick="next()">ต่อไป →</button></div>
+
 
 <script>
 const pages=[...document.querySelectorAll('.page')], home=document.getElementById('home'), jigsaw=document.getElementById('jigsaw'), bloom=document.getElementById('bloom');
 let page=0, playing=false, track="";
 function go(n){page=Math.max(0,Math.min(8,n));pages.forEach((x,i)=>x.classList.toggle('active',i===page));document.getElementById('label').textContent=`หน้า ${page+1} / 9`;music();scrollTo(0,0)}
 function next(){go(page+1)} function prev(){go(page-1)}
-function music(){if(!playing)return;let want=(page>=4&&page<=7)?"jigsaw":"home";if(want===track)return;[home,jigsaw,bloom].forEach(x=>x.pause());track=want;let a=want==="home"?home:jigsaw;a.volume=.45;a.play().catch(()=>{})}
-function toggleMusic(){if(!playing){playing=true;track="";music()}else{[home,jigsaw,bloom].forEach(x=>x.pause());playing=false;track=""}}
+ 
+
 const qs=[
 ["เราเริ่มรู้จักกันจากอะไร?",["สายรหัส","คาเฟ่","คอนเสิร์ต","ห้องเรียน"],0],
 ["วันนี้เราครบรอบกี่ปี?",["1 ปี","2 ปี","3 ปี","4 ปี"],1],
@@ -134,7 +166,26 @@ const prompts=[
 ];
 document.getElementById('deepForm').innerHTML=prompts.map((p,i)=>`<div class="question"><label>${i+1}. ${p.replace(/\n/g,"<br>")}</label><textarea name="q${i+1}"></textarea></div>`).join("")+
 `<button type="button" class="btn primary" onclick="save()">บันทึกคำตอบไว้ในเครื่องนี้</button><button type="button" class="btn" onclick="clearForm()">ล้างคำตอบ</button><p><small>เวอร์ชันนี้เป็นแบบทดลองเก็บคำตอบในเครื่องที่เปิดเว็บอยู่ ขั้นต่อไปเราจะเชื่อมแบบฟอร์มออนไลน์ให้แฟนตอบจากมือถือแล้วแพตอ่านได้</small></p>`;
-function save(){let d={};document.querySelectorAll('#deepForm textarea').forEach(x=>d[x.name]=x.value);localStorage.setItem('albumAnswers',JSON.stringify(d));alert('บันทึกคำตอบไว้ในเครื่องนี้แล้ว ♡')}
+async function save(){
+  let d={};
+  document.querySelectorAll('#deepForm textarea').forEach(x=>d[x.name]=x.value);
+  localStorage.setItem('albumAnswers',JSON.stringify(d));
+
+  const message = Object.entries(d)
+    .map(([q,a]) => q + ": " + a)
+    .join("\n");
+
+  try{
+    await fetch("https://script.google.com/macros/s/AKfycbwCIcR2ZSUkwZZmRSuusaf_R4WIOOIN4bHb30OkfFuAe_Ur4H0p-wXsz-bRFhsGS61v/exec?message=" + encodeURIComponent(message), {
+      method:"GET",
+      mode:"no-cors"
+    });
+
+    alert("บันทึกคำตอบแล้ว ♡");
+  }catch(e){
+    alert("บันทึกในเครื่องแล้ว แต่ส่งคำตอบไม่สำเร็จ");
+  }
+}
 function clearForm(){document.querySelectorAll('#deepForm textarea').forEach(x=>x.value="");localStorage.removeItem('albumAnswers')}
 renderQuiz();go(0);
 </script>
