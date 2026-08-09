@@ -141,6 +141,8 @@ h3{margin:0 0 8px;font-size:22px}p{line-height:1.85}.lead{font-size:18px}
 <nav class="controls"><button onclick="prev()">←</button><div class="middle"><div class="dots" id="dots"></div><small id="count"></small></div><button onclick="next()">→</button></nav>
 
 <script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxW7gsiwPIPXyfWlOpvVIFgjZuP-ze_HK_Wja7BqV5Pov0aS2LIlQilmxCH2cg9XaGb/exec";
+
 const questions=[
 ["ใครกันนะที่ดูน่าแกล้งตั้งแต่แรกที่เจอกัน?",["หนู","แก","ไม่มีใคร เราเรียบร้อยทั้งคู่"],1],
 ["ถ้าแกมาบ่นให้หนูฟัง แปลว่าอะไร?",["แกไว้ใจหนูพอที่จะเล่าให้ฟัง","แกไม่มีอะไรทำ","แกมาหาคนทะเลาะ"],0],
@@ -160,7 +162,38 @@ function next(){if(page<pages.length-1)go(page+1)}function prev(){if(page>0)go(p
 function updateNav(){document.getElementById("dots").innerHTML=Array.from({length:pages.length},(_,i)=>`<span class="dot ${i===page?"active":""}"></span>`).join("");document.getElementById("count").textContent=`หน้า ${page+1} / ${pages.length}`}
 function drawQuiz(){document.getElementById("quiz").innerHTML=questions.map((q,i)=>`<div class="question"><div class="question-title">${i+1}. ${q[0]}</div>${q[1].map((x,j)=>`<button class="option" onclick="answer(${i},${j},this)">${String.fromCharCode(65+j)}. ${x}</button>`).join("")}<div class="result" id="result-${i}"></div></div>`).join("")}
 function answer(i,j,b){if(answered[i])return;const r=document.getElementById(`result-${i}`);if(j===questions[i][2]){answered[i]=true;score++;b.classList.add("correct");r.textContent="✨ ถูกต้อง! ไปต่อได้เลย";}else{b.classList.add("wrong");r.textContent="ยังไม่ใช่ ลองใหม่ได้เลย ♡";}document.getElementById("score").textContent=answered.every(Boolean)?`${score} / 10 — ตอบครบแล้ว ♡`:`${score} / 10`}
-function saveDeepTalk(){for(let i=1;i<=10;i++){localStorage.setItem("album_d"+i,document.getElementById("d"+i).value)}document.getElementById("deepStatus").textContent="บันทึกคำตอบทั้งหมดไว้แล้ว ♡"}
+async function saveDeepTalk(){
+  const status=document.getElementById("deepStatus");
+  const requests=[];
+  let sent=0;
+
+  for(let i=1;i<=10;i++){
+    const value=document.getElementById("d"+i).value.trim();
+    localStorage.setItem("album_d"+i,value);
+
+    if(value){
+      const title=document.querySelector("#d"+i).parentElement.querySelector("h3").textContent;
+      const cleanTitle=title.replace(/^\d+\.\s*/,"");
+      const message=`Deep Talk ข้อ ${i}: ${cleanTitle}\nคำตอบ: ${value}`;
+
+      requests.push(
+        fetch(WEB_APP_URL+"?message="+encodeURIComponent(message),{
+          method:"GET",
+          mode:"no-cors"
+        }).then(()=>{sent++;}).catch(()=>{})
+      );
+    }
+  }
+
+  if(!requests.length){
+    status.textContent="ยังไม่มีคำตอบให้ส่งนะ ♡";
+    return;
+  }
+
+  status.textContent="กำลังส่งคำตอบไป Google Sheets… ♡";
+  await Promise.all(requests);
+  status.textContent=`ส่งคำตอบที่กรอกแล้ว ${sent} ข้อไป Google Sheets เรียบร้อย ♡`;
+}
 function loadDeepTalk(){for(let i=1;i<=10;i++){const v=localStorage.getItem("album_d"+i);if(v!==null)document.getElementById("d"+i).value=v}}
 function skipQuestion(n){document.getElementById("d"+n).value="(ข้ามข้อนี้)";localStorage.setItem("album_d"+n,"(ข้ามข้อนี้)")}
 loadDeepTalk();drawQuiz();updateNav();
