@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>A Little Album of Us — 2 Years</title>
+<style>
+:root{--paper:#f4ead8;--cream:#fff8e9;--ink:#3d342c;--brown:#765b43;--rust:#a56a4c;--line:#d6c5aa;--shadow:rgba(50,35,25,.16)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:#d7c8b0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans Thai",sans-serif}
+.page{display:none;min-height:100svh;padding:24px 16px 92px}.page.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.paper{max-width:900px;min-height:calc(100svh - 48px);margin:auto;background:var(--paper);padding:34px 24px;box-shadow:0 12px 40px var(--shadow);position:relative}
+.content{position:relative;z-index:1}.center{text-align:center}
+.kicker{font-family:Georgia,serif;font-size:12px;letter-spacing:.18em;color:var(--rust);margin-bottom:18px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;color:var(--brown);font-weight:500}
+h1{font-size:clamp(42px,9vw,82px);line-height:.95;margin:0 0 18px}
+h2{font-size:clamp(30px,6vw,50px);line-height:1.05;margin:0 0 18px}
+h3{margin:0 0 8px;font-size:22px}p{line-height:1.85}.lead{font-size:18px}
+.record{width:min(55vw,250px);aspect-ratio:1;border-radius:50%;margin:0 auto 28px;background:repeating-radial-gradient(circle,#111 0 2px,#292726 3px 5px);box-shadow:8px 10px 20px var(--shadow)}
+.btn{border:1px solid #806b56;background:#fff8ea;color:var(--ink);padding:11px 17px;border-radius:999px;cursor:pointer;margin:4px;font-size:15px}
+.btn.primary{background:var(--brown);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:#fffaf0;border:1px solid var(--line);padding:18px;box-shadow:2px 4px 10px var(--shadow)}
+.photo{background:#fffdf6;padding:10px 10px 22px;box-shadow:4px 8px 16px var(--shadow);text-align:center}
+.photo img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#d8c8b0;display:block}
+.photo:nth-child(even){transform:rotate(1deg)}.photo:nth-child(odd){transform:rotate(-1deg)}
+.hero-photo{max-width:620px;margin:22px auto 0;background:#fffdf6;padding:12px 12px 26px;box-shadow:5px 10px 20px var(--shadow);transform:rotate(-.6deg)}
+.hero-photo img{width:100%;max-height:72svh;object-fit:contain;display:block;background:#e4d7c4}
+.timeline{border-left:2px dashed var(--brown);padding-left:22px;margin:30px 8px}.event{margin:0 0 28px}
+.quiz-wrap{display:grid;gap:15px}.question{background:#fffaf0;border:1px solid var(--line);padding:18px}
+.question-title{font-weight:700;line-height:1.6;margin-bottom:10px}
+.option{display:block;width:100%;text-align:left;background:#fffdf8;border:1px solid #cdbba3;padding:11px;margin:7px 0;border-radius:9px;color:var(--ink);font:inherit;cursor:pointer}
+.option.correct{background:#e5ead9!important;border-color:#84946c}.option.wrong{background:#f0d8ca!important;border-color:#b47c64}
+.result{min-height:24px;margin-top:8px;font-size:14px}.score{position:sticky;bottom:62px;background:#fff8e9ee;border:1px solid var(--line);padding:10px;text-align:center;margin:18px 0;font-weight:700}
+.letter{background:#fffaf0;border:1px solid var(--line);padding:24px 20px;box-shadow:3px 6px 14px var(--shadow);white-space:pre-line;line-height:2;font-family:"Noto Serif Thai",Georgia,serif;font-size:16px}
+.quote{margin:28px auto 0;max-width:720px;font-family:Georgia,serif;font-size:clamp(22px,5vw,34px);line-height:1.45;color:var(--brown)}
+.translation{margin:14px auto 0;max-width:650px;color:#6d5b4b;line-height:1.8}
+.deep-list{display:grid;gap:16px}.deepbox{background:#fffaf0;border:1px solid var(--line);padding:18px;box-shadow:2px 4px 10px var(--shadow)}
+.deepbox textarea{width:100%;min-height:120px;resize:vertical;padding:14px;border:1px solid #cdbba3;border-radius:9px;background:#fffdf8;color:var(--ink);font:16px/1.8 -apple-system,BlinkMacSystemFont,"Noto Sans Thai",sans-serif}
+.deepbox.last textarea{min-height:280px}.deep-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.deep-status{min-height:24px;margin-top:8px;color:var(--brown);font-size:14px}
+.controls{position:fixed;bottom:0;left:0;right:0;z-index:10;background:#fff8e9ee;display:flex;justify-content:center;align-items:center;gap:6px;padding:8px;border-top:1px solid #d0bfa7;backdrop-filter:blur(5px)}
+.controls button{width:42px;height:38px;border:1px solid #806b56;background:#fff8ea;color:var(--ink);border-radius:999px;font-size:18px;cursor:pointer}
+.middle{text-align:center;min-width:130px}.dots{display:flex;justify-content:center;gap:5px;margin-bottom:3px}
+.dot{width:7px;height:7px;border-radius:50%;background:#cdbba3}.dot.active{background:var(--brown);transform:scale(1.25)}
+#count{font-size:11px;color:#6d5b4b}
+@media(max-width:600px){.paper{padding:26px 16px}.grid{grid-template-columns:1fr}.hero-photo img{max-height:64svh}}
+</style>
+</head>
+<body>
+
+<section class="page active"><div class="paper"><div class="content center">
+<div class="record"></div><div class="kicker">SIDE A · OUR LITTLE ALBUM · 2024—2026</div>
+<h1>A Little<br>Album of Us</h1>
+<p class="lead">730 วันของเรา — วันที่ดี วันที่วุ่นวาย และทุกอย่างที่อยู่ระหว่างนั้น</p>
+<button class="btn primary" onclick="go(1)">เปิดเรื่องของเรา ↓</button>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE A · 01 · OUR BEGINNING</div><h2>ก่อนจะเป็น “เรา”</h2>
+<div class="grid">
+<div class="photo"><img src="ssets/IMG_1364.jpeg" alt="รูปที่ 1"></div>
+<div class="photo"><img src="ssets/IMG_1365.jpeg" alt="รูปที่ 2"></div>
+<div class="photo"><img src="ssets/IMG_1366.jpeg" alt="รูปที่ 3"></div>
+<div class="photo"><img src="ssets/IMG_1367.jpeg" alt="รูปที่ 4"></div>
+</div>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE A · 02 · 730 DAYS</div><h2>สองปีที่มีเธอ</h2>
+<div class="hero-photo"><img src="ssets/IMG_1368.jpeg" alt="รูปหลักของเรา"></div>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE A · 03 · LITTLE THINGS</div><h2>สิ่งเล็ก ๆ</h2>
+<div class="grid">
+<div class="card"><h3>บ่นบ่น</h3><p>หนูชอบที่แกมาบ่นให้หนูฟัง หนูแบบรู้สึกว่าเป็นเซฟโซนให้กับแกได้ ถึงจะเป็นเรื่องเล็กๆหน่อย หนูก็รู้สึกดีใจ น่ารักดีค่ะคนสวย</p></div>
+<div class="card"><h3>อ้อนอ้อน</h3><p>หนูน่ะนะรู้สึกว่าแกอ้นอ้อนน่ารักๆ ไหนลองทำเสียงหมาเด็ก หอมกลิ่นหมาเด็ก มาจุ๊บนี่มา ใจคนหล่อละลายน่ารักจริงๆอะคนสวย</p></div>
+<div class="card"><h3>Deep Talk</h3><p>หนูชอบเวลาที่เราคุยเรื่องความฝันของกันและกันหรือว่าเรื่องราวต่างๆ หนูรู้สึกว่ามันทำให้หนูได้เรียนรู้ในตัวแกจากการเล่าเรื่อง อะไรหลายๆอย่าง แล้วหนูก็ชอบเพราะว่าเหมือนเรากำลังรับฟังกันเต็มที่ แลกเปลี่ยนความคิดเห็น น่ารักน่ารัก</p></div>
+<div class="card"><h3>สกินชิพ</h3><p>จริงๆคือหนูอะเป็นคนติดสกินชิพมากกกกกกกกกกกกกกกกก แต่ก็นะหนูก็มีมาดเนาะ ก็เขินๆแต่ก็จะรู้สึกดีเวลาสกอนชิพ แต่ว่าก็เริ่มก่อนแบบกวนกวน จริงๆก็ชอบอ้อนคนแต่ว่าก็นะมันก้ช็เขินเนาะ ยังไงดีอะ</p></div>
+</div>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE B · 04 · DEEP TALK</div><h2>Deep Talk ♡</h2>
+<div class="deep-list">
+<div class="deepbox"><h3>1. หลังจากผ่านมา 2 ปี แกคิดว่า “เรา” เปลี่ยนไปยังไงบ้าง?</h3><textarea id="d1"></textarea></div>
+<div class="deepbox"><h3>2. มีช่วงเวลาไหนของเราที่แกยังจำได้จนถึงวันนี้?</h3><textarea id="d2"></textarea></div>
+<div class="deepbox"><h3>3. มีสิ่งเล็ก ๆ อะไรที่หนูทำแล้วทำให้แกรู้สึกว่า “หนูใส่ใจแก”?</h3><textarea id="d3"></textarea></div>
+<div class="deepbox"><h3>4. มีอะไรที่แกอยากให้หนูรู้ แต่ไม่ค่อยมีโอกาสได้พูด?</h3><textarea id="d4"></textarea></div>
+<div class="deepbox"><h3>5. มีอะไรที่แกอยากให้หนูลองปรับ หรือทำให้ดีขึ้นในความสัมพันธ์ของเราบ้าง?</h3><textarea id="d5"></textarea></div>
+<div class="deepbox"><h3>6. มีอะไรที่หนูเคยทำแล้วทำให้แกรู้สึกไม่ดี แต่แกอาจไม่เคยบอกหนู?</h3><textarea id="d6"></textarea><div class="deep-actions"><button class="btn" type="button" onclick="skipQuestion(6)">ขอข้ามข้อนี้ ♡</button></div></div>
+<div class="deepbox"><h3>7. เวลาแกเหนื่อยหรือมีเรื่องไม่สบายใจ แกอยากให้หนูอยู่ข้าง ๆ ในแบบไหน?</h3><textarea id="d7"></textarea></div>
+<div class="deepbox"><h3>8. ถ้าเลือกได้หนึ่งอย่าง แกอยากให้หนูได้ทำอะไรด้วยกันในปีที่ 3?</h3><textarea id="d8"></textarea></div>
+<div class="deepbox"><h3>9. ถ้าให้แกเลือกหนึ่งคำเพื่ออธิบายความสัมพันธ์ของเราในตอนนี้ แกจะเลือกคำว่าอะไร? เพราะอะไร?</h3><textarea id="d9"></textarea></div>
+<div class="deepbox last"><h3>10. ถ้าแกอยากฝากข้อความหนึ่งข้อความไว้ให้หนูเปิดกลับมาอ่านอีกครั้ง ในวันที่ครบรอบของเราในอนาคต แกอยากเขียนว่าอะไร?</h3><textarea id="d10"></textarea></div>
+</div>
+<button class="btn primary" type="button" onclick="saveDeepTalk()">บันทึกคำตอบทั้งหมด ♡</button>
+<div id="deepStatus" class="deep-status"></div>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE B · 05 · OUR TIMELINE</div><h2>Timeline</h2>
+<div class="timeline">
+<div class="event"><h3>จุดเริ่มต้น</h3><p>ตอนนั้นน่ะนะที่แบบไปคุยกับแกเพราะว่าแบบแกดูน่าแกล้งเนาะ เหมือนหมูโดนต้อนยังไงดีอะ แต่จริงๆช่วงนั้นเป็นเป็นช่วงแรกๆที่หนูฝึกเฟรนลี่ ปกติก็อยู่เงียบๆขี้อายด้วย แต่ก็อยากจะลองดูสักครั้งในชีวิต ยังไงดีเฟรนลี่จนได้ดี</p></div>
+<div class="event"><h3>วันที่เริ่มคบ</h3><p>จริงๆไม่เคยโดนใครขอเป็นแฟนต่อหน้าเลย ปกติก็จะแบบผ่านแชทไรงี้ ก็มีความรู้สึกอยู่ในใจว่าต้องมีอะไร แอบเขินเล็กๆ ไอเราก็หล่ออะเนาะ น่ารักจริงเชียวคนสวย มาจุ๊บนี่มา</p></div>
+<div class="event"><h3>สิ่งที่เราเรียนรู้</h3><p>มันมีหลายเรื่องราวมากมายเลย แล้วถ้าให้หนูบอกก็คงจะรู้สึกว่าเราก็โตกันจากวันแรกที่เรารู้จักกันมากพอสมควร แต่ว่าหนูก็สึกดีที่ยังมีแกอยู่ตอนนี้ หนูได้เรียนรู้อะไรหลายๆเยอะมาก แล้วมันก็ทำให้หนูฝึกอะไรหลายๆอย่างเหมือนกัน มันเป็นเรื่องที่ดีอะ ไม่ได้รู้สึกแย่เลย ก็อยู่ด้วยกันไปแบบนี้เท่าที่พวกเราจะทำได้นะ</p></div>
+</div>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE B · 06 · WHAT WE LEARNED</div><h2>สิ่งที่เราเรียนรู้</h2>
+<div class="grid">
+<div class="card"><h3>ข้อ 1 · ปล่อยวางหลายๆเรื่อง</h3><p>แบบหนูเป็นคนคิดมาก แต่จริงๆหลายๆเรื่องราวก็ทำให้หนูได้เรียนรู้อะ แล้วมันก็ทำให้ความสัมพันธ์มันไม่ตึงขนาดนั้นเท่าไหร่</p></div>
+<div class="card"><h3>ข้อ 2 · กล้าที่จะพูดความรู้สึกตัวเองมากขึ้น</h3><p>แต่ก่อนหนูจะกลัว หนูคิดว่าตัวเองงี่เง่าแล้วหาเหตุผลมาซัพพอร์ตทุกคนตลอดเลย พออยู่ในจุดๆนึง ที่ตกตะกอนได้แล้วหนูก็รู้สึกว่า หนูก็สำคัญไม่แพ้กับใครที่หนูแคร์เลย แล้วมันก็ไม่ได้เป็นเรื่องที่แย่ มันดีด้วยซ้ำเราจะได้ช่วยกันแก้ไขปัญหา</p></div>
+<div class="card"><h3>ข้อ 3 · คำพูดของหนู</h3><p>จริงๆหนูเคยคิดว่าหนูอะพูดดีแล้วนะ อธิบายดีแล้ว จนเรามาตึงๆกันล่าสุดแล้วหนูคุยกับแกหนูรู้สึกว่า หนูเจอประโยคแบบนี้ตลอดเช่น ก็ปกติของพี่ ก็แล้วแต่แกอะ ตามนั้น อะไรประมาณนี้ มันทำให้หนูคิดว่าหรือว่าคำพูดของหนูมันไปทำให้แกรู้สึกว่าหนูกำลังตัดสินแกอยู่น่ะนะ ทั้งๆที่จริงๆหนูอยากให้แกเข้าใจความรู้สึกหนู อยากให้แกโอ๋ แล้วค่อยบอกเหตุผล หนูรู้สึกเหมือนโดนโอบกอดทางใจ อ้อนอ้อน หนูเลยลองไปปรับคำพูดใหม่ หนูก็ไม่รู้ว่าตอนนี้มันโอเคมั้ย แต่หนูก็จะพยายามทำให้เต็มที่</p></div>
+</div>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE B · 07 · OUR GAME</div><h2>How well do you know us? ♡</h2>
+<p>ตอบคำถามดูว่าแกจำเรื่องของหนูได้แค่ไหน ♡</p>
+<div id="quiz" class="quiz-wrap"></div><div id="score" class="score">0 / 10</div>
+</div></div></section>
+
+<section class="page"><div class="paper"><div class="content">
+<div class="kicker">SIDE B · 08 · ONE LAST PAGE</div><h2>จดหมาย</h2>
+<div class="letter">สุขสันต์วันครบรอบ2ปีนะแก หนูก็คงบอกคำเดิมว่าก็ดีใจที่ได้เจอแก เหมือนได้มีเพื่อนเพิ่ม เถียงกันอยู่อย่างนั้น ยังไงดี ฉันรักแกจ่ะ อยู่ด้วยกันอีก1วัน
+
+ก็คงขอให้แกได้ทำในสิ่งที่แกอยากทำ หนูก็ซัพพอร์ตแกอยู่ตรงนี้ หนูก็อยากให้แกทำตามความฝันของแกให้สำเร็จ ขอบคุณที่เข้ามาในชีวิตของหนู หนูเรียนรู้เรื่องราวหลายๆอย่างจากแก แล้วหนูก็อยากพัฒนาตัวเองมากขึ้น
+
+ขอบคุณที่เข้ามาเป็นโบนัสในชีวิตของหนูตอนนี้ ก็หวังว่าเราจะอยู่ด้วยไปเรื่อยๆจนอายุขึ้นเลข2ไปเลย เริ่ดๆ มีเรื่องอะไรไม่สบายใจก็มาคุยกับหนูได้ หลายๆหนูก็จะพยายามปรับ มาปรับให้มันดีขึ้นด้วยกันนะ
+
+ก็ยังบอกเหมือนเดิมว่าหนูไม่ได้อยากรับฟังเรื่องมีความสุขของแก แต่อยากเป็นคนที่แกเล่าทุกเรื่องให้หนูฟัง หนูขอให้แกมีความสุขๆกับการใช้ชีวิตในบทบาทใหม่ของแก ทำให้เต็มที่ อยากทำอะไรก็ทำได้เลยถ้ามันไม่เดือดร้อนใคร เหนื่อยเมื่อไหร่ก็กลับมาหาหนู
+
+ขอให้เป็นปีที่ดีของพวกเรานะ แล้วก็ในหลายๆเรื่องหนูก็ขอโทษด้วยหนูกลับไปทบทวนอะไรหลายๆอย่างมา ในตอนนี้ก็มีหลายเรื่องที่พยายามปรับ หนูขอให้เราทั้งคู่โชคดีนะ 🤍🍀🫧💭</div>
+<div class="quote">“Whatever comes next, I hope we keep finding our way back to the little things that made us smile, and keep growing in our own ways.”</div>
+<p class="translation center">“ไม่ว่าอะไรจะเกิดขึ้นต่อจากนี้ หนูหวังว่าเราจะยังกลับมาหาสิ่งเล็ก ๆ ที่ทำให้เรายิ้มได้ และค่อย ๆ เติบโตในแบบของตัวเองไปด้วยกัน”</p>
+</div></div></section>
+
+<nav class="controls"><button onclick="prev()">←</button><div class="middle"><div class="dots" id="dots"></div><small id="count"></small></div><button onclick="next()">→</button></nav>
+
+<script>
+const questions=[
+["ใครกันนะที่ดูน่าแกล้งตั้งแต่แรกที่เจอกัน?",["หนู","แก","ไม่มีใคร เราเรียบร้อยทั้งคู่"],1],
+["ถ้าแกมาบ่นให้หนูฟัง แปลว่าอะไร?",["แกไว้ใจหนูพอที่จะเล่าให้ฟัง","แกไม่มีอะไรทำ","แกมาหาคนทะเลาะ"],0],
+["สิ่งไหนที่หนูแพ้ทางแกที่สุด?",["เวลาแกอ้อน","เวลาแกเงียบ","เวลาแกหาย"],0],
+["ถ้าเราได้ Deep Talk กัน หนูชอบคุยเรื่องอะไรที่สุด?",["ความฝันและเรื่องราวของกันและกัน","ดราม่าคนอื่น","วันนี้กินอะไร"],0],
+["หนูเป็นคนแบบไหนเรื่องสกินชิพ?",["ไม่เอาเลย เขิน","ติดมากกกกก แต่มีมาดนิดนึง","เฉย ๆ"],1],
+["ถ้าเรามีเรื่องไม่เข้าใจกัน หนูอยากให้เราทำอะไรมากที่สุด?",["หายไปก่อน","แข่งกันว่าใครผิด","กลับมาคุยกันและช่วยกันแก้"],2],
+["ข้อไหนคือสิ่งที่หนูรู้สึกว่าได้เรียนรู้มากขึ้นในสองปีนี้?",["การปล่อยวางและกล้าพูดความรู้สึกของตัวเองมากขึ้น","การเอาชนะกันทุกครั้งที่มีปัญหา","การเงียบใส่กันเวลาไม่สบายใจ"],0],
+["ถ้าแกเหนื่อย หนูอยากเป็นอะไรให้แก?",["คนที่คอยตัดสิน","พื้นที่ที่แกกลับมาคุยได้","คนที่บอกให้แกหยุดเหนื่อย"],1],
+["ถ้าย้อนกลับไปวันแรก หนูจะเลือกทำความรู้จักแกอีกไหม?",["ไม่เอาแล้ว 555","ขอคิดก่อน","เอาสิ จะทำความรู้จักเหมือนเดิม"],2],
+["สุดท้ายแล้ว หนูอยากให้เราเป็นยังไงต่อไป?",["อยู่ด้วยกันไปเท่าที่เราทำได้ และค่อย ๆ เติบโตไปด้วยกัน","แข่งกันว่าใครหล่อกว่า","ใครแพ้เลี้ยงข้าว"],0]
+];
+let page=0,answered=Array(questions.length).fill(false),score=0;
+const pages=[...document.querySelectorAll(".page")];
+function go(n){page=Math.max(0,Math.min(pages.length-1,n));pages.forEach((e,i)=>e.classList.toggle("active",i===page));updateNav();scrollTo(0,0)}
+function next(){if(page<pages.length-1)go(page+1)}function prev(){if(page>0)go(page-1)}
+function updateNav(){document.getElementById("dots").innerHTML=Array.from({length:pages.length},(_,i)=>`<span class="dot ${i===page?"active":""}"></span>`).join("");document.getElementById("count").textContent=`หน้า ${page+1} / ${pages.length}`}
+function drawQuiz(){document.getElementById("quiz").innerHTML=questions.map((q,i)=>`<div class="question"><div class="question-title">${i+1}. ${q[0]}</div>${q[1].map((x,j)=>`<button class="option" onclick="answer(${i},${j},this)">${String.fromCharCode(65+j)}. ${x}</button>`).join("")}<div class="result" id="result-${i}"></div></div>`).join("")}
+function answer(i,j,b){if(answered[i])return;const r=document.getElementById(`result-${i}`);if(j===questions[i][2]){answered[i]=true;score++;b.classList.add("correct");r.textContent="✨ ถูกต้อง! ไปต่อได้เลย";}else{b.classList.add("wrong");r.textContent="ยังไม่ใช่ ลองใหม่ได้เลย ♡";}document.getElementById("score").textContent=answered.every(Boolean)?`${score} / 10 — ตอบครบแล้ว ♡`:`${score} / 10`}
+function saveDeepTalk(){for(let i=1;i<=10;i++){localStorage.setItem("album_d"+i,document.getElementById("d"+i).value)}document.getElementById("deepStatus").textContent="บันทึกคำตอบทั้งหมดไว้แล้ว ♡"}
+function loadDeepTalk(){for(let i=1;i<=10;i++){const v=localStorage.getItem("album_d"+i);if(v!==null)document.getElementById("d"+i).value=v}}
+function skipQuestion(n){document.getElementById("d"+n).value="(ข้ามข้อนี้)";localStorage.setItem("album_d"+n,"(ข้ามข้อนี้)")}
+loadDeepTalk();drawQuiz();updateNav();
+</script>
+</body>
+</html>
